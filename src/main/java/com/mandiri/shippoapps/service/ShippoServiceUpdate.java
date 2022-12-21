@@ -4,6 +4,7 @@ import com.mandiri.shippoapps.common.Message;
 import com.mandiri.shippoapps.model.entity.Shippo;
 import com.mandiri.shippoapps.repository.ShippoRepository;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -20,11 +21,21 @@ public class ShippoServiceUpdate {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, message);
         }
 
-        updateStore.setName(shippo.getName());
-        updateStore.setAddress(shippo.getAddress());
-        updateStore.setPhone(shippo.getPhone());
-        updateStore.setPermitNumber(shippo.getPermitNumber());
-        updateStore.setTaxNumber(shippo.getTaxNumber());
+        if (StringUtils.isBlank(updateStore.getName())){
+            updateStore.setName(shippo.getName());
+        }
+        if (StringUtils.isBlank(updateStore.getAddress())) {
+            updateStore.setAddress(shippo.getAddress());
+        }
+        if (StringUtils.isBlank(updateStore.getPhone())){
+            updateStore.setPhone(shippo.getPhone());
+        }
+        if (StringUtils.isBlank(updateStore.getPermitNumber())){
+            updateStore.setPermitNumber(shippo.getPermitNumber());
+        }
+        if (StringUtils.isBlank(updateStore.getTaxNumber())){
+            updateStore.setTaxNumber(shippo.getTaxNumber());
+        }
 
         shippoRepository.save(updateStore);
     }
