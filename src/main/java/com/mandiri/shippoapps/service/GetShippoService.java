@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ShippoServiceFind {
+public class GetShippoService {
     private final ShippoRepository shippoRepository;
     public List<Shippo> getAllStore(){
         return shippoRepository.findAll();

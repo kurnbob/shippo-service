@@ -1,15 +1,14 @@
 package com.mandiri.shippoapps.service;
 
-import com.mandiri.shippoapps.model.entity.Shippo;
 import com.mandiri.shippoapps.repository.ShippoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class ShippoServiceCreate {
+public class DeleteShippoService {
     private final ShippoRepository shippoRepository;
-    public void createNew(Shippo shippo){
-        shippoRepository.save(shippo);
+    public void deleteStoreById(String id){
+        shippoRepository.deleteById(id);
     }
 }

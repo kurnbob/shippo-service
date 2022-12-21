@@ -12,7 +12,6 @@ import java.util.UUID;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter @Getter
 @Table(name="shippo")
 public class Shippo{
     @Id

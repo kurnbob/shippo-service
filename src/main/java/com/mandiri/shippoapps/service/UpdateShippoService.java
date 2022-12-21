@@ -11,7 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
-public class ShippoServiceUpdate {
+public class UpdateShippoService {
     private final ShippoRepository shippoRepository;
 
     public void updateStore(String id, Shippo shippo){
