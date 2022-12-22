@@ -1,6 +1,7 @@
 package com.mandiri.shippoapps.controller;
 import com.mandiri.shippoapps.model.entity.Shippo;
 import com.mandiri.shippoapps.model.request.CreateShippoRequest;
+import com.mandiri.shippoapps.model.request.UpdateShippoRequest;
 import com.mandiri.shippoapps.model.response.Response;
 import com.mandiri.shippoapps.service.PostShippoService;
 import com.mandiri.shippoapps.service.DeleteShippoService;
@@ -59,9 +60,13 @@ public class ShippoController {
         deleteShippoService.deleteStoreById(id);
     }
 
-    @PutMapping("/store/{id}")
-    public void updateStore(@PathVariable String id, @RequestBody Shippo shippo){
-        updateShippoService.updateStore(id, shippo);
+    @PutMapping("/store")
+    public ResponseEntity<Response<Shippo>> updateStore(@RequestBody UpdateShippoRequest shippo){
+        Response<Shippo> response = new Response<>();
+        response.setMessage("Shippo Successfully Update");
+        response.setData(updateShippoService.execute(shippo));
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(response);
     }
-
 }
